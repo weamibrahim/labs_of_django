@@ -1,0 +1,20 @@
+<!-- todo_update.html -->
+{% extends 'main/base_layout.html' %}
+{% block main-content %}
+
+
+<form method="POST" action="{% url 'todo:todo-update' task_id=task_id %}">
+  {% csrf_token %}
+  <label class="form-label" for="name">Name:</label>
+  <input class="form-control" type="text" id="name" name="name" value="{{ task_name }}"><br>
+  <label class="form-label" for="author">Name of author:</label>
+  <input class="form-control" type="text" id="author" name="author" value="{{ task_author }}"><br>
+  <label class="form-label" for="priority">Priority:</label>
+  <input class="form-control" type="text" id="priority" name="priority" value="{{ task_priority }}"><br>
+
+  <label class="form-label" for="description">Description:</label>
+  <textarea class="form-control" id="description" name="description">{{ task_description }}</textarea><br>
+
+  <input type="submit" class="btn btn-primary  " style="margin-left:600px" value="Update">
+</form>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'main/base_layout.html' %}
+
+
+{% block main-content %}
+ <h1> Welcome to todo details </h1>
+ <table class="table">
+    <thead>
+        <tr>
+            <td> ID </td>
+            <td> Name </td>
+            <td> author</td>
+            <td> Priority </td>
+            <td> Description </td>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr {% if task_priority > 3 %} style="color:red" {% else %} style="color:green" {% endif %} >
+            <td>{{ task_id }} </td>
+            <td>{{ task_name }} </td>
+            <td>{{ task_author }} </td>
+            <td> {{ task_priority }}</td>
+            <td> {{ task_description }} </td>
+        </tr>
+    </tbody>
+
+ </table>
+
+{% endblock %}
+
+{% if task_priority > 3 %}
+    <h1> Hight</h1>
+    {% else %}
+     <h1> Low </h1>
+{% endif %}
+
+
+<a href="{% url 'todo:index' %}"> Back to Index</a>
+<a href="{% url 'todo:todo-list' %}"> Back to List</a>
